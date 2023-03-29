@@ -1,0 +1,35 @@
+{   
+    "name": "Test1",
+    "description": "This pipeline can be performed to test FLEMP, see README for more info.",
+    "author": "FLEMP",
+    "url": "https://github.com/pietrocinaglia/flemp",
+    "help": "Pipeline for testing.",
+    "pipeline": {
+        "p1": {
+            "params": "SAMPLES_DIR,P1_TIME",
+            "statement": "foreach OBJ in {{WORKSPACE}}/{{SAMPLES_DIR}}",
+            "parallel": false,
+            "steps": [
+                {
+                    "name": "Mapping Sample on Reference Genome [.sam]",
+                    "description": "- Output: .sam",
+                    "cmd": "./modules/test {{OBJ}}_1.fq.gz_AND_{{OBJ}}_2.fq.gz {{P1_TIME}}"
+                },{
+                    "name": "Sorting",
+                    "description": "- Output: .bam",
+                    "cmd": "./modules/test {{OBJ}}.sam {{P1_TIME}}"
+                }
+            ]
+        },
+        "p2": {
+            "params": "P2_PAR1,P2_TIME",
+            "steps": [
+                {
+                    "name": "Merging All Transcripts",
+                    "description": "",
+                    "cmd": "./modules/test {{P2_PAR1}} {{P2_TIME}}"
+                }
+            ]
+        }
+    }
+}
