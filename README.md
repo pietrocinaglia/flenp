@@ -1,10 +1,12 @@
 # FLEMP
 
-FLEMP (Flexible Automated Pipeline Engine) is a software tool able to configure and deploy automated pipelines for Transcript-level Quantification from RNA-seq.
+FLexible ENgine for Parallel Processing of Pipelines in Genomics (FLEMP) is a software tool to design and deploy automated pipelines for parallel processing of genomics data. It models a pipeline based on its own template, having a highly understandable and manipulable organization, to meet the operator's need for customization. A scientist may model an in-house custom pipeline able to execute all tools based on a command line interface (CLI). FLEMP supports the parallel processing, to efficiently analyze large datasets. It orchestrates the processing according to the steps defined within a given template, by maximizing the CPU usage during the computation.
 
 
 FLEMP has been translated into a C program; it uses libpython and static C files of its own to execute in the same way as CPython does.
 Note that the "requirements.txt" contains all dependancies need to FLEMP, as well as to "monitor.py". The latter is a Python script stand-alone executable to monitor CPU and Memory usage (plotting is also supported); we used it for testing only.
+
+FLEMP supports Unix-like Operating Systems; note that FLEMP has been compiled for macOS, and tested on macOS Monterey (12.4, Intel).
 
 
 ## How to run FLEMP
@@ -18,9 +20,6 @@ Alternatively, you can insert parameters manually through:
 or:
 
 > ./FLEMP
-
-
-Notes: FLEMP supports Unix-like Operating Systems; it has been tested on MacOS.
 
 
 ## Testing
