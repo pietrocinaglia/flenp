@@ -1,0 +1,57 @@
+{   
+    "name": "Transcript-level Abundances pipeline (Human GRCh38)",
+    "description": "Estimate transcript-level abundances of RNA-seq experiments with Hisat2, SamTools, and StringTie. Output enriched with coverage data for the reference transcripts.",
+    "author": "Pietro Cinaglia and Mario Cannataro",
+    "url": "",
+    "help": "",
+    "pipeline": {
+        "1": {
+            "params": "SAMPLES_PATH,GENOME,GRCh38_ANNOTATION,THREADS",
+            "statement": "foreach OBJ in {{SAMPLES_PATH}}",
+            "steps": [
+                {
+                    "name": "Align {{OBJ}} on GRCh38 [.sam]",
+                    "description": "- Output: .sam",
+                    "cmd": "./modules/hisat2 {% if THREADS %}-p {{THREADS}} {% endif %}--dta -x {{GENOME}} -1 {{OBJ}}_1.fq.gz -2 {{OBJ}}_2.fq.gz -S workspace/{{OBJ}}.sam"
+                },
+                {
+                    "name": "Sort alignments",
+                    "description": "- Output: .bam",
+                    "cmd": "samtools sort {% if THREADS %}-@ {{THREADS}} {% endif %} workspace/{{OBJ}}.sam -o workspace/{{OBJ}}.bam"
+                },
+                {
+                    "name": "Index alignments",
+                    "description": "- Output: .bam",
+                    "cmd": "samtools index {% if THREADS %}-@ {{THREADS}} {% endif %} workspace/{{OBJ}}.bam"
+                },
+                {
+                    "name": "Transcript assembly",
+                    "description": "- Output: .gtf",
+                    "cmd": "stringtie {% if THREADS %}-p {{THREADS}} {% endif %} workspace/{{OBJ}}.bam -l {{OBJ}} -G {{GRCh38_ANNOTATION}} -o workspace/{{OBJ}}.gtf --rf -A workspace/{{OBJ}}_gene_abundance.tab"
+                }
+            ]
+        },
+        "2": {
+            "params": "SAMPLES_LIST",
+            "steps": [
+                {
+                    "name": "Merge all transcripts",
+                    "description": "- Output: 'data.gtf'",
+                    "cmd": "stringtie --merge -p 8 -G {{GRCh38_ANNOTATION}} -o workspace/data.gtf {{SAMPLES_LIST}}"
+                }
+            ]
+        },
+        "3": {
+            "params": "",
+            "statement": "foreach OBJ in {{SAMPLES_PATH}}",
+            "steps": [
+                {
+                    "name": "Estimate transcript-level abundances (tla) in {{OBJ}}",
+                    "description": "- Output: .ta.gtf, and Ballgown folder.",
+                    "cmd": "stringtie -p 8 -e -B -G workspace/data.gtf workspace/{{OBJ}}.bam -o workspace/{{OBJ}}.tla.gtf"
+                }
+            ]
+        }
+    }
+}
+        
