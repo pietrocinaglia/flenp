@@ -1,6 +1,6 @@
 {   
     "name": "Transcript-level Abundances pipeline (Human GRCh38)",
-    "description": "Estimate transcript-level abundances of RNA-seq experiments with Hisat2, SamTools, and StringTie. Output enriched with coverage data for the reference transcripts.",
+    "description": "FLENP's template for a pipeline able to estimate the transcript-level abundances of RNA-seq experiments by using Hisat2, SamTools, and StringTie. Output enriched with coverage data for the reference transcripts.",
     "author": "Pietro Cinaglia and Mario Cannataro",
     "url": "",
     "help": "",
