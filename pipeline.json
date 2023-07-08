@@ -1,8 +1,8 @@
 {   
     "name": "Test1",
-    "description": "This pipeline can be performed to test FLEMP, see README for more info.",
-    "author": "FLEMP",
-    "url": "https://github.com/pietrocinaglia/flemp",
+    "description": "This pipeline can be performed to test FLENP, see README for more info.",
+    "author": "FLENP",
+    "url": "https://github.com/pietrocinaglia/flenp",
     "help": "Pipeline for testing.",
     "pipeline": {
         "p1": {
