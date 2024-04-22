@@ -7,7 +7,8 @@ import time
 
 ###
 # Configuration
-workspace_path = "/"
+workspace_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir( workspace_path )
 create_log = True
 plot_usage = False
 sleep_time = 1 # seconds
@@ -21,7 +22,7 @@ for i in range(100000000):
     print("-----------------------------")
 
     if create_log:
-        logfile = open(workspace_path+"/log.csv", "a", encoding='UTF8')
+        logfile = open("log.csv", "a", encoding='UTF8')
         writer = csv.writer(logfile)
         writer.writerow([i, cpu_usage, mem_usage])
         logfile.close()
