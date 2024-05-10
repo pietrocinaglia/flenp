@@ -8,6 +8,12 @@ import multiprocessing
 import logging
 from datetime import date
 
+###
+# @author: Pietro Cinaglia
+# @mail: cinaglia (at) unicz (dot) it
+# @github: https://github.com/pietrocinaglia
+###
+
 class FLENP:
     
     ############
