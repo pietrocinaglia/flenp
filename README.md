@@ -7,6 +7,13 @@ It is implemented as a software tool able to configure and deploy automated pipe
 Note that the "requirements.txt" contains all dependancies need to FLENP, as well as to "monitor.py". The latter is a Python script stand-alone executable to monitor CPU and Memory usage (plotting is also supported); we used it for testing only.
 
 
+## FLENP UI - PIPELINE BUILDER
+
+FLENP UI - PIPELINE BUILDER is now available. It allows building pipeline via drag-and-drop. A minimal set of modules is included, you can add your own modules in according to FLENP requirements by using JSON.
+
+FLENP UI - PIPELINE BUILDER: https://pietrocinaglia.github.io/flenp/
+
+
 ## How to run FLENP
 
 > python3 FLENP.py pipeline.json SAMPLES_DIR=samples P1_TIME=5 P2_PAR1=P2 P2_TIME=5
