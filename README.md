@@ -4,17 +4,22 @@ FLexible ENgine of Pipeline (FLENP) is a versatile method for designing and para
 
 It is implemented as a software tool able to configure and deploy automated pipelines, e.g., for Transcript-level Quantification from RNA-seq (see example).
 
-Note that the "requirements.txt" contains all dependancies need to FLENP, as well as to "monitor.py". The latter is a Python script stand-alone executable to monitor CPU and Memory usage (plotting is also supported); we used it for testing only.
+A web-based PIPELINE BUILDER with User interface (UI) is also available.
+
+## FLENP (UI - PIPELINE BUILDER)
+
+FLENP UI - PIPELINE BUILDER is a web-based tool, which allows building pipeline (for FLENP Engine) via a user-friendly UI based on drag-and-drop.
+
+Note that a minimal set of modules is only included, however, you can add your own modules in according to FLENP requirements by using JSON.
+
+FLENP UI - PIPELINE BUILDER is freely available at https://pietrocinaglia.github.io/flenp/
+
+Note that for the full-features which include the support to thirdy-party (self-implemented) modules, it can also be downloaded from this repositor, for hosting on a private remote/local environment; it only requires HTML, Javascript, and CSS.
 
 
-## FLENP UI - PIPELINE BUILDER
+## FLENP (ENGINE)
 
-FLENP UI - PIPELINE BUILDER is now available. It allows building pipeline via drag-and-drop. A minimal set of modules is included, you can add your own modules in according to FLENP requirements by using JSON.
-
-FLENP UI - PIPELINE BUILDER: https://pietrocinaglia.github.io/flenp/
-
-
-## How to run FLENP
+How to run FLENP Engine:
 
 > python3 FLENP.py pipeline.json SAMPLES_DIR=samples P1_TIME=5 P2_PAR1=P2 P2_TIME=5
 
@@ -26,10 +31,14 @@ or:
 
 > python3 FLENP.py
 
-Notes: FLENP supports Python3 and Unix-like Operating Systems; it has been tested on MacOS.
+
+#### Additional Information
+
+- FLENP supports Python3 and Unix-like Operating Systems; it has been tested on MacOS.
+- "requirements.txt" contains all dependancies need to FLENP, as well as to "monitor.py". The latter is a Python script stand-alone executable to monitor CPU and Memory usage (plotting is also supported); we used it for testing only.
 
 
-## Testing
+#### Testing
 A testing pipeline based on the module (i.e., 'test') located into 'modules' is available. Furthermore, a set of synthetic files (.fq.gz) are located into 'samples'.
 Note that both testing module and synthetic files DO NOT PRODUCE an output, these are only for testing.
 We invite you to use a real pipeline based on non-testing modules to produce a valid output.
