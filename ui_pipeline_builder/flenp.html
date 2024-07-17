@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>FLENP UI - Pipeline Builder</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
+	<link href="inc/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<link href="inc/bootstrap/icons/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="inc/flowchart/jquery.flowchart.css">
+	<link rel="stylesheet" href="inc/flenp.ui.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="header" style="width: 100%;">
+			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #606091; 100%; padding: 10px;">
+				<a class="navbar-brand" href="#">FLENP UI - Pipeline Builder <sub style="font-size: x-small; font-style: italic;">v.0.9</sub></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				  <div style="border-color: gray; border-width: 2px; color: white;">
+					<small><i>Developed by Pietro Cinaglia, Magna Graecia University of Catanzaro (Italy).</small>
+				  </div>
+				  <div style="position: absolute; top: 15px; right: 10px;">
+					<a class="btn btn-info btn-sm" href="https://github.com/pietrocinaglia/flenp"><i class="bi bi-github"></i> Download FLENP-Engine from GitHub</a>
+				  </div>
+				</div>
+			  </nav>
+		</div>
+		<div class="pipeline_metadata">
+			<div class="row">
+				<div class="col-auto">
+					<label for="pipeline_name" class="col-form-label">Pipeline's Name</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="pipeline_name" class="form-control form-control-sm" aria-describedby="pipelinename">
+				</div>
+				<div class="col-auto">
+					<button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#pipeline_metadata" aria-expanded="false" aria-controls="pipelineproperties">
+						Show/Hide All Pipeline's Metadata
+					</button>
+				</div>
+			</div>
+			<div class="collapse" id="pipeline_metadata">
+				<div class="card card-body">
+					<div class="mb-3">
+						<label for="pipeline_description" class="form-label">Description</label>
+						<input type="text" class="form-control" id="pipeline_description" placeholder="Describe the pipeline and its workflow.">
+					</div>
+					<div class="mb-3">
+						<label for="pipeline_author" class="form-label">Author/s</label>
+						<input type="text" class="form-control" id="pipeline_author" placeholder="References about the authors.">
+					</div>
+					<div class="mb-3">
+						<label for="pipeline_url" class="form-label">Url</label>
+						<input type="text" class="form-control" id="pipeline_url" placeholder="Web-Site, Repository, or other reference related to the pipeline.">
+					</div>
+					<div class="mb-3">
+						<label for="pipeline_help" class="form-label">Help</label>
+						<input type="text" class="form-control" id="pipeline_help" placeholder="Pur here information useful to users (e.g., parameters).">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="toolbox-container" id="toolbox-container">
+			<!-- Modules -->
+		</div>
+
+		<div class="workspace-container">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a href="#workspace" class="nav-link active" data-bs-toggle="tab">Workspace</a>
+				</li>
+				<li class="nav-item">
+					<a href="#sourcecode" class="nav-link" data-bs-toggle="tab" id="export_data">Source Code</a>
+				</li>
+				<li class="nav-item">
+					<a href="#pipeline" class="nav-link" data-bs-toggle="tab" id="compile_pipeline">Pipeline</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade show active" id="workspace">
+					<div id="chart_container">
+						<div class="flowchart-workspace-container" id="flowchartworkspace"></div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sourcecode">
+					<!-- <button class="set_data" id="import_data">Import data</button> -->
+					<textarea id="flowchart_data" class="flowchart_data"></textarea>
+				</div>
+				<div class="tab-pane fade" id="pipeline">
+					<button id="download_button" class="btn btn-link btn-sm" type="button" style="float:right">Download</button>
+					<textarea id="pipeline_data" class="flowchart_data"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="properties_offcanvas" aria-labelledby="offcanvasScrollingLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasScrollingLabel"><div class="operator_data_title" id="operator_data_title"></div></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body" id="operator_data_description"></div>
+			<div class="offcanvas-footer">
+				<button class="btn btn_set_operator_data " type="button" id="setOperatorData">Save</button>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+<!-- JS -->
+<script src="inc/jquery/jquery.min.js"></script>
+<script src="inc/jquery/jquery-ui.min.js"></script>
+<script src="inc/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="inc/flowchart/jquery.flowchart.js"></script>
+<script src="modules/loader.js"></script>
+<script src="inc/flenp.compile.js"></script>
+<script src="inc/flenp.ui.js"></script>
+
+</html>

@@ -1,0 +1,64 @@
+/* Style */
+.container {
+    width: 100%;
+    margin-top: 25px;
+}
+.flowchart-workspace-container {
+    width: 100%;
+    height: 400px;
+    background: white;
+    border: 1px solid #BBB;
+    margin-bottom: 10px;
+    background-size: 25px 25px;
+    background-image:
+        linear-gradient(to right, #f1f1f1 1px, transparent 1px),
+        linear-gradient(to bottom, #f1f1f1 1px, transparent 1px);
+}
+.workspace-container {
+    margin-top: 25px;
+}
+.toolbox-container {
+    cursor: pointer;
+    margin-top: 25px;
+    border: 1px solid #BBB;
+}
+.pipeline_metadata {
+    margin-top: 25px;
+}
+.toolbox-item {
+    display: inline-block;
+    margin: 5px 5px 0px 5px;
+    width: 200px;
+    height: 25px;
+    border: 1px solid #CCCCCC;
+    background: #FAFAFA;
+    font-size: 10pt;
+    font-weight: bold;
+    border-radius: 10px;
+    height: 30px;
+    padding: 5px 5px 5px 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.create_block_button {
+    background: #7b7b7b;
+    color: white;
+}
+.flowchart_data {
+    width: 100%;
+    height: 500px;
+}
+.pull-right {
+    float: right;
+}
+.offcanvas-footer {
+    margin: 5px auto;
+}
+.offcanvas-footer .btn_set_operator_data {
+    width: 200px;
+    height: 35px;
+    background: rgb(0, 145, 0);
+    color: white;
+    padding:0;
+}

@@ -1,0 +1,282 @@
+/*
+ * jquery.flowchart - CSS definitions
+ */
+
+.flowchart-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.flowchart-links-layer, .flowchart-operators-layer, .flowchart-temporary-link-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.flowchart-operators-layer, .flowchart-temporary-link-layer {
+    pointer-events: none;
+}
+
+.flowchart-temporary-link-layer {
+    display: none;
+}
+
+.flowchart-link, .flowchart-operator {
+    cursor: default;
+}
+
+.flowchart-operator-connector {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.flowchart-operator-connector-label {
+    font-size: small;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-label {
+    margin-left: 14px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-label {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.flowchart-operator-connector-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid rgb(204, 204, 204);
+    position: absolute;
+    top: 0px;
+}
+
+.flowchart-operator-connector-small-arrow {
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent; /*rgb(100, 100, 100);*/
+    position: absolute;
+    top: 5px;
+    pointer-events: none;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-arrow {
+    left: -1px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-arrow {
+    right: -10px;
+}
+
+.flowchart-operator-inputs .flowchart-operator-connector-small-arrow {
+    left: -1px;
+}
+
+.flowchart-operator-outputs .flowchart-operator-connector-small-arrow {
+    right: -7px;
+}
+
+.unselectable {
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+/* Default Operator */
+
+.flowchart-operator {
+    position: absolute;
+    border: 1px solid #CCCCCC;
+    background: #FAFAFA;
+    pointer-events: auto;
+
+    -webkit-box-shadow: 0 2px 15px 2px #CCCCCC;
+    box-shadow: 0 2px 15px 2px #CCCCCC;
+    border-radius: 10px;
+    padding: 0px;
+    width: 200px;
+}
+
+.flowchart-operator.hover {
+    border: 1px solid #7fc0fd;
+    -webkit-box-shadow: 0 2px 20px 2px #7fc0fd;
+    box-shadow: 0 2px 20px 2px #7fc0fd;
+}
+
+.flowchart-operator.selected {
+    background: white;
+    border: 1px solid #4ea9ff;
+    -webkit-box-shadow: 0 2px 20px 2px #4ea9ff;
+    box-shadow: 0 2px 20px 2px #4ea9ff;
+}
+
+.flowchart-operator .flowchart-operator-title {
+    width: 100%;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-bottom: 1px solid #DDDDDD;
+    background: #F0F0F0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: move;
+
+    font-size: 11pt;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 35px;
+    padding: 8px 5px 5px 15px;
+}
+
+.flowchart-operator .flowchart-operator-delete {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 8pt;
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    color: red;
+}
+
+.flowchart-operator .flowchart-operator-delete:hover {
+    background-color: #ff3838;
+    border: 1px solid red;
+    color: white;
+
+    -webkit-box-shadow: 0 2px 20px 2px red;
+    box-shadow: 0 2px 20px 2px red;
+}
+
+.flowchart-operator .flowchart-operator-inputs-outputs {
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 20px;
+}
+
+.flowchart-operator .flowchart-operator-inputs, .flowchart-operator-outputs {
+    display: table-cell;
+    width: 50%;
+}
+
+.flowchart-operator-description {
+    padding: 5px;
+    cursor: move;
+    margin: -20px 5px 5px 10px;
+    font-size: 10pt;
+    white-space: initial;
+    word-wrap: break-word;
+}
+
+/*
+ * flowchart-block-operator
+ */
+.flowchart-block-operator {
+    height: 90px;
+    width: 90px;
+    border-radius: 30px;
+}
+.flowchart-block-operator .flowchart-operator-inputs-outputs {
+    margin-top: -53px;
+    margin-bottom: 0px;
+    z-index: 1000;
+}
+.flowchart-block-operator .flowchart-operator-delete {
+    top: 0px;
+    right: 0px;
+}
+.flowchart-block-operator .flowchart-operator-title {
+    height: 90%;
+    width: 90%;
+    margin: 5px auto;
+    padding: 5px;
+    padding-top: 30px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.flowchart-block-operator .flowchart-operator-description {
+    margin-top: -5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/*
+ * flowchart-step-operator
+ */
+.flowchart-step-operator {}
+
+/*
+ * flowchart-vertical
+ */
+
+.flowchart-vertical .flowchart-operator-inputs,
+.flowchart-vertical .flowchart-operator-outputs {
+    position: relative;
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+.flowchart-vertical .flowchart-operator-connector-set {
+    display: table-cell;
+}
+.flowchart-vertical .flowchart-operator-connector {
+    position: relative;
+}
+.flowchart-vertical .flowchart-operator-connector-label {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.flowchart-vertical .flowchart-operator-inputs .flowchart-operator-connector-label {
+    margin-left: auto;
+}
+.flowchart-vertical .flowchart-operator-connector-arrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
+    left: calc(50% - 10px);
+}
+.flowchart-vertical .flowchart-operator-connector-small-arrow {
+    border-right: 5px solid transparent;
+    top: 2px;
+    left: calc(50% - 5px);
+}
+.flowchart-vertical .flowchart-operator-connector-arrow {
+    top: 0px;
+}
+.flowchart-vertical .flowchart-operator-outputs .flowchart-operator-connector-arrow {
+    bottom: -20px;
+    top: auto;
+}
+.flowchart-vertical .flowchart-operator-outputs .flowchart-operator-connector-small-arrow {
+    left: calc(50% - 5px);
+    bottom: -12px;
+    top: auto;
+}
+.flowchart-vertical .flowchart-link rect {
+    display: none;
+}
+.flowchart-link:hover {
+    color: red;
+}
