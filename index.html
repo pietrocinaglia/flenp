@@ -16,9 +16,6 @@
 		<div class="header" style="width: 100%;">
 			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #606091; 100%; padding: 10px;">
 				<a class="navbar-brand" href="#">FLENP UI - Pipeline Builder <sub style="font-size: x-small; font-style: italic;">v.0.9</sub></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				  <span class="navbar-toggler-icon"></span>
-				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				  <div style="border-color: gray; border-width: 2px; color: white;">
 					<small><i>Developed by Pietro Cinaglia, Magna Graecia University of Catanzaro (Italy).</small>
@@ -120,5 +117,16 @@
 <script src="modules/loader.js"></script>
 <script src="inc/flenp.compile.js"></script>
 <script src="inc/flenp.ui.js"></script>
+
+<script type="text/javascript">
+	function is_touch_enabled() {
+		return ( 'ontouchstart' in window ) || 
+			   ( navigator.maxTouchPoints > 0 ) ||
+			   ( navigator.msMaxTouchPoints > 0 );
+	}
+	if( is_touch_enabled() ) {
+		alert("Devices with touch screen are not supported. The UI will be disabled, and it will be shown for illustrative purpose only.")
+	}
+ </script>
 
 </html>
