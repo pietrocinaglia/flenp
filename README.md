@@ -11,9 +11,7 @@
 
 *FLENP* derives from *Flexible Automated Pipeline Engine* (FAPE, https://github.com/pietrocinaglia/fape), extending its functionality and improving its usability and robustness.
 
-```
-Pietro Cinaglia and Mario Cannataro. 2023. A Flexible Automated Pipeline Engine for Transcript-Level Quantification from RNA-seq. In Advances in Conceptual Modeling: ER 2022 Workshops, CMLS, EmpER, and JUSMOD, Hyderabad, India, October 17–20, 2022, Proceedings. Springer-Verlag, Berlin, Heidelberg, 45–54. https://doi.org/10.1007/978-3-031-22036-4_5
-```
+> Pietro Cinaglia and Mario Cannataro. 2023. A Flexible Automated Pipeline Engine for Transcript-Level Quantification from RNA-seq. In Advances in Conceptual Modeling: ER 2022 Workshops, CMLS, EmpER, and JUSMOD, Hyderabad, India, October 17–20, 2022, Proceedings. Springer-Verlag, Berlin, Heidelberg, 45–54. https://doi.org/10.1007/978-3-031-22036-4_5
 
 
 ## *FLENP - PIPELINE BUILDER*
