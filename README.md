@@ -54,6 +54,12 @@ Note that both testing module and synthetic files DO NOT PRODUCE an output, thes
 We invite you to use a real pipeline based on non-testing modules to produce a valid output.
 
 
+#### How To Dockerize Your Pipeline
+You can run *FLENP - ENGINE* in a Docker container by dockerizing your pipeline.
+
+"docker-example" contains a DockerFile able to run a FLENP's pipeline, as well as a bash script for resolving dependences and installing modules. Note that you need to define your directives, based on your pipeline and the related third-party modules of interest.
+
+
 ## License
 
 MIT License
