@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>FLENP - PIPELINE BUILDER</title>
+	<title>fDESI - Pipeline Designer</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
 	<link href="inc/bootstrap/bootstrap.min.css" rel="stylesheet">
 	<link href="inc/bootstrap/icons/bootstrap-icons.css" rel="stylesheet">
 	<link rel="stylesheet" href="inc/flowchart/jquery.flowchart.css">
-	<link rel="stylesheet" href="inc/flenp.ui.css">
+	<link rel="stylesheet" href="inc/fdesi.ui.css">
 </head>
 
 <body>
 	<div class="container">
 		<div class="header" style="width: 100%;">
 			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #606091; 100%; padding: 10px;">
-				<a class="navbar-brand" href="#">FLENP - PIPELINE BUILDER <sub style="font-size: x-small; font-style: italic;">v.0.9</sub></a>
+				<a class="navbar-brand" href="#"><u>F</u>LENP <u>DESI</u>gner (<u>fDESI</u>)
+					<sub style="font-size: x-small; font-style: italic;">v.1.0</sub></a>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				  <div style="border-color: gray; border-width: 2px; color: white;">
 					<small><i>Developed by Pietro Cinaglia, Magna Graecia University of Catanzaro (Italy).</small>
 				  </div>
 				  <div style="position: absolute; top: 15px; right: 10px;">
-					<a class="btn btn-info btn-sm" href="https://github.com/pietrocinaglia/flenp"><i class="bi bi-github"></i> Download FLENP - ENGINE from GitHub</a>
+					<a class="btn btn-info btn-sm" href="https://github.com/pietrocinaglia/flenp"><i class="bi bi-github"></i> Download FLENP (engine) from GitHub</a>
 				  </div>
 				</div>
 			  </nav>
@@ -116,7 +117,7 @@
 <script src="inc/flowchart/jquery.flowchart.js"></script>
 <script src="modules/loader.js"></script>
 <script src="inc/flenp.compile.js"></script>
-<script src="inc/flenp.ui.js"></script>
+<script src="inc/fdesi.ui.js"></script>
 
 <script type="text/javascript">
 	function is_touch_enabled() {
@@ -125,7 +126,7 @@
 			   ( navigator.msMaxTouchPoints > 0 );
 	}
 	if( is_touch_enabled() ) {
-		alert("Devices with touch screen are not supported. The UI will be disabled, and it will be shown for illustrative purpose only.")
+		alert("Devices with touch screen are not supported. The UI will be disabled, however, it will be shown for illustrative purpose only.")
 	}
  </script>
 
