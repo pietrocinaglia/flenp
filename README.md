@@ -2,30 +2,28 @@
 
 *FLexible ENgine of Pipeline* (*FLENP*) is a versatile solution for designing and parallel processing genomic pipelines. 
 
-*FLENP* project is implemented into two modules (ENGINE and PIPELINE BUILDER) able to design, configure, and deploy automated pipelines; a non-exhaustive example of pipeline fo Transcript-level Quantification from RNA-seq is also included (it can be directly executed by *FLENP - ENGINE*).
+*FLENP* project is released in two (independent) modules: *FLENP - ENGINE* (or *FLENP*, simply) and *FLENP - DESIGNER* (*fDESI*). The former is able to execute pipelines in its own format, the latter allows designing and configuring them; a non-exhaustive example of pipeline fo Transcript-level Quantification from RNA-seq is also included (it can be directly executed by *FLENP - ENGINE*).
 
-*FLENP - PIPELINE BUILDER* is available as web-based tool with Graphical User Interface (GUI).
+*fDESI* is available as web-based tool with Graphical User Interface (GUI).
 
 
 ### References
 
-*FLENP* derives from *Flexible Automated Pipeline Engine* (FAPE, https://github.com/pietrocinaglia/fape), extending its functionality and improving its usability and robustness.
-
-> Pietro Cinaglia and Mario Cannataro. 2023. A Flexible Automated Pipeline Engine for Transcript-Level Quantification from RNA-seq. In Advances in Conceptual Modeling: ER 2022 Workshops, CMLS, EmpER, and JUSMOD, Hyderabad, India, October 17–20, 2022, Proceedings. Springer-Verlag, Berlin, Heidelberg, 45–54. https://doi.org/10.1007/978-3-031-22036-4_5
+> Pietro Cinaglia. 2024. A Lightweight Method for Designing and Massive Processing of Genomics Pipelines. IEEE Access, vol. 12, pp. 168245-168255. DOI: 10.1109/ACCESS.2024.3464867
 
 
-## *FLENP - PIPELINE BUILDER*
+## *FLENP - DESIGNER* (*fDESI*)
 
-*FLENP - PIPELINE BUILDER* is a web-based tool, which allows building pipeline (for *FLENP ENGINE*) via a user-friendly GUI based on drag-and-drop.
+*fDESI* is a web-based tool, which allows building pipeline (for *FLENP - ENGINE*) via a user-friendly GUI based on drag-and-drop.
 
-Note that a minimal set of modules is only included, however, you can add your own modules in according to *FLENP ENGINE* requirements by using JSON.
+Note that a minimal set of modules is only included, however, you can add your own modules in according to *FLENP - ENGINE* requirements by using JSON.
 
-*FLENP - PIPELINE BUILDER* is freely available at https://pietrocinaglia.github.io/flenp
+*fDESI* is freely available at https://pietrocinaglia.github.io/flenp
 
 Note that for the full-features which include the support to thirdy-party (self-implemented) modules, it can also be downloaded from this repositor, for hosting on a private remote/local environment; it only requires HTML, Javascript, and CSS.
 
 
-## FLENP - ENGINE
+## *FLENP - ENGINE* (or *FLENP*, simply)
 
 How to run *FLENP - ENGINE*:
 
