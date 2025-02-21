@@ -20,10 +20,6 @@
                     "cmd": "samtools sort {% if THREADS %}-@ {{THREADS}} {% endif %} workspace/{{OBJ}}.sam -o workspace/{{OBJ}}.bam"
                 },
                 {
-
- 
-
-
                     "name": "Index alignments",
                     "description": "- Output: .bam",
                     "cmd": "samtools index {% if THREADS %}-@ {{THREADS}} {% endif %} workspace/{{OBJ}}.bam"
