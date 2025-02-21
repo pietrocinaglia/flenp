@@ -1,0 +1,259 @@
+{
+  "metadata": {
+	"name": "Transcript-level Abundances pipeline (Human GRCh38)",
+	"description": "The pipeline concerns the transcript-level expression analysis of RNA-seq experiments based on the Pertea et al. (2016) study.",
+	"author": "Pietro Cinaglia (based on the Pertea et al., 2016, study).",
+	"url": "https://github.com/pietrocinaglia",
+	"help": "Helpful information for configuring and/or interpreting input, output, and parameters of interest should be provided here.",
+  },
+  "pipeline": {
+    "operators": {
+      "0": {
+        "properties": {
+          "type": "step",
+          "title": "HISAT2",
+          "description": "HISAT2",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "hisat2 --dta -x {{GENOME}} -1 {{OBJ}}_1.fq.gz -2 {{OBJ}}_2.fq.gz -S {{OBJ}}.sam",
+          "cmd_list": [
+            "hisat2",
+            "hisat2 --merge",
+            "hisat2 --index"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 160,
+        "top": 40
+      },
+      "1": {
+        "properties": {
+          "type": "step",
+          "title": "SAMtools",
+          "description": "SAMtools",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "samtools sort {{OBJ}}.sam -o {{OBJ}}.bam",
+          "cmd_list": [
+            "samtools",
+            "samtools sort",
+            "samtools index"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 400,
+        "top": 60
+      },
+      "2": {
+        "properties": {
+          "type": "step",
+          "title": "SAMtools",
+          "description": "SAMtools",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "samtools index {{OBJ}}.bam",
+          "cmd_list": [
+            "samtools",
+            "samtools sort",
+            "samtools index"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 640,
+        "top": 80
+      },
+      "3": {
+        "properties": {
+          "type": "step",
+          "title": "StringTie",
+          "description": "StringTie",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "stringtie {{OBJ}}.bam -l {{OBJ}} -G {{GRCh38_ANNOTATION}} -o {{OBJ}}.gtf --rf -A {{OBJ}}_gene_abundance.tab",
+          "cmd_list": [
+            "stringtie",
+            "stringtie --merge"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 880,
+        "top": 100
+      },
+      "4": {
+        "properties": {
+          "type": "step",
+          "title": "StringTie",
+          "description": "StringTie",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "stringtie --merge -G {{GRCh38_ANNOTATION}} -o data.gtf {{SAMPLES_LIST}}",
+          "cmd_list": [
+            "stringtie",
+            "stringtie --merge"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 160,
+        "top": 200
+      },
+      "5": {
+        "properties": {
+          "type": "step",
+          "title": "StringTie",
+          "description": "StringTie",
+          "statement": null,
+          "statement_list": null,
+          "cmd": "stringtie -e -B -G data.gtf {{OBJ}}.bam -o {{OBJ}}.tla.gtf",
+          "cmd_list": [
+            "stringtie",
+            "stringtie --merge"
+          ],
+          "inputs": {
+            "prev": {}
+          },
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 580,
+        "top": 280
+      },
+      "Block#0": {
+        "properties": {
+          "type": "block",
+          "title": "Block#0",
+          "description": "A block allows defining a set of linked-commands.",
+          "statement": "foreach OBJ in {{SAMPLES_PATH}}",
+          "statement_list": [
+            "sequential",
+            "foreach"
+          ],
+          "cmd": null,
+          "cmd_list": null,
+          "inputs": null,
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 20,
+        "top": 20
+      },
+      "Block#1": {
+        "properties": {
+          "type": "block",
+          "title": "Block#1",
+          "description": "A block allows defining a set of linked-commands.",
+          "statement": "",
+          "statement_list": [
+            "sequential",
+            "foreach"
+          ],
+          "cmd": null,
+          "cmd_list": null,
+          "inputs": null,
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 20,
+        "top": 180
+      },
+      "Block#2": {
+        "properties": {
+          "type": "block",
+          "title": "Block#2",
+          "description": "A block allows defining a set of linked-commands.",
+          "statement": "",
+          "statement_list": [
+            "sequential",
+            "foreach"
+          ],
+          "cmd": null,
+          "cmd_list": null,
+          "inputs": null,
+          "outputs": {
+            "next": {}
+          }
+        },
+        "left": 420,
+        "top": 260
+      }
+    },
+    "links": {
+      "0": {
+        "fromOperator": "Block#0",
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 0,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      },
+      "2": {
+        "fromOperator": 0,
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 1,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      },
+      "3": {
+        "fromOperator": 1,
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 2,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      },
+      "4": {
+        "fromOperator": 2,
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 3,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      },
+      "5": {
+        "fromOperator": "Block#1",
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 4,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      },
+      "6": {
+        "fromOperator": "Block#2",
+        "fromConnector": "next",
+        "fromSubConnector": 0,
+        "toOperator": 5,
+        "toConnector": "prev",
+        "toSubConnector": 0
+      }
+    },
+    "operatorTypes": {}
+  }
+}

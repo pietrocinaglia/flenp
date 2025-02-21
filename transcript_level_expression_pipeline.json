@@ -1,9 +1,9 @@
 {   
     "name": "Transcript-level Abundances pipeline (Human GRCh38)",
-    "description": "FLENP's template for a pipeline able to estimate the transcript-level abundances of RNA-seq experiments by using Hisat2, SamTools, and StringTie. Output enriched with coverage data for the reference transcripts.",
-    "author": "Cinaglia et al.",
-    "url": "",
-    "help": "",
+	"description": "The pipeline concerns the transcript-level expression analysis of RNA-seq experiments based on the Pertea et al. (2016) study.",
+	"author": "Pietro Cinaglia (based on the Pertea et al., 2016, study).",
+	"url": "https://github.com/pietrocinaglia",
+	"help": "Helpful information for configuring and/or interpreting input, output, and parameters of interest should be provided here.",
     "pipeline": {
         "1": {
             "params": "SAMPLES_PATH,GENOME,GRCh38_ANNOTATION,THREADS",
@@ -12,7 +12,7 @@
                 {
                     "name": "Align {{OBJ}} on GRCh38 [.sam]",
                     "description": "- Output: .sam",
-                    "cmd": "./modules/hisat2 {% if THREADS %}-p {{THREADS}} {% endif %}--dta -x {{GENOME}} -1 {{OBJ}}_1.fq.gz -2 {{OBJ}}_2.fq.gz -S workspace/{{OBJ}}.sam"
+                    "cmd": "./modules/hisat2 {% if THREADS %}-p {{THREADS}} {% endif %} --dta -x {{GENOME}} -1 {{OBJ}}_1.fq.gz -2 {{OBJ}}_2.fq.gz -S workspace/{{OBJ}}.sam"
                 },
                 {
                     "name": "Sort alignments",
@@ -37,7 +37,7 @@
                 {
                     "name": "Merge all transcripts",
                     "description": "- Output: 'data.gtf'",
-                    "cmd": "stringtie --merge -p 8 -G {{GRCh38_ANNOTATION}} -o workspace/data.gtf {{SAMPLES_LIST}}"
+                    "cmd": "stringtie --merge {% if THREADS %}-@ {{THREADS}} {% endif %} -G {{GRCh38_ANNOTATION}} -o workspace/data.gtf {{SAMPLES_LIST}}"
                 }
             ]
         },
@@ -48,10 +48,12 @@
                 {
                     "name": "Estimate transcript-level abundances (tla) in {{OBJ}}",
                     "description": "- Output: .ta.gtf, and Ballgown folder.",
-                    "cmd": "stringtie -p 8 -e -B -G workspace/data.gtf workspace/{{OBJ}}.bam -o workspace/{{OBJ}}.tla.gtf"
+                    "cmd": "stringtie {% if THREADS %}-@ {{THREADS}} {% endif %} -e -B -G workspace/data.gtf workspace/{{OBJ}}.bam -o workspace/{{OBJ}}.tla.gtf"
                 }
             ]
         }
     }
 }
+
+stringtie -e -B -G data.gtf {{OBJ}}.bam -o {{OBJ}}.tla.gtf
         
