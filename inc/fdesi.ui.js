@@ -9,6 +9,7 @@ $(document).ready(function() {
 	//$('#create_block').click(createBlock);
 	$('#setOperatorData').click(setOperatorData);
 	$('#download_button').click(downloadPipeline);
+	$('#run_button').click(runPipeline);
 
 	var $flowchart = $('#flowchartworkspace');
 	var $container = $flowchart.parent();
@@ -212,6 +213,11 @@ function compilePipeline() {
 
 	$('#pipeline_data').val(pipeline);
 	return pipeline;
+}
+//--- Run Pipeline
+function runPipeline() {
+	// This function call FLENP-engine on cloud by passing the pipeline as input; local running can be also performed by downloading FLENP-engine.
+	alert("Running the pipeline online is disabled in preview mode... sorry, our resources are limited :-( However, you can download FLENP-engine from GitHub and run your pipeline locally, after downloading it.");
 }
 //--- Scaffolding Operator's properties
 function operatorScaffolding(data) {
