@@ -3,14 +3,19 @@ var block_last_id = 0;
 var offcanvasElement = document.getElementById("properties_offcanvas"); 
 var offcanvas = new bootstrap.Offcanvas(offcanvasElement);
 
-$(document).ready(function() {
+$(function(){
+    onPageLoad();
+});
+
+function onPageLoad(){
 	$('#export_data').click(exportData);
 	$('#compile_pipeline').click(compilePipeline);
 	//$('#create_block').click(createBlock);
 	$('#setOperatorData').click(setOperatorData);
 	$('#download_button').click(downloadPipeline);
+	$('#add_module_button').click(addModule);
 	$('#run_button').click(runPipeline);
-
+	
 	var $flowchart = $('#flowchartworkspace');
 	var $container = $flowchart.parent();
 
@@ -163,7 +168,7 @@ $(document).ready(function() {
 			
 		}
 	});
-});
+}
 //--------------------------------------------------------------
 //--- Download Pipeline
 function downloadPipeline() {
@@ -213,6 +218,31 @@ function compilePipeline() {
 
 	$('#pipeline_data').val(pipeline);
 	return pipeline;
+}
+//--- Add Module
+function addModule($element) {
+	// This function call FLENP-engine on cloud by passing the pipeline as input; local running can be also performed by downloading FLENP-engine.
+	cmd_list = [];
+
+	if ($('#new-module-cmd-list').val().length == 0){
+		alert("[ERROR] You must specify at least one command that can be called from the shell.");
+		return;
+	} else {
+		cmd_list = $('#new-module-cmd-list').val().split('\n');
+	}
+
+	var module = {
+		type: 'step',
+		title: $('#new-module-title').val(),
+		description: $('#new-module-description').val(),
+		cmd: cmd_list[0],
+		cmd_list: JSON.stringify(cmd_list)
+	};
+
+	add_module_in_dashboard(module);
+	$('#add_module_modal_view').modal('hide');
+
+	onPageLoad();
 }
 //--- Run Pipeline
 function runPipeline() {
